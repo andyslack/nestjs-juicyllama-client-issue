@@ -7,15 +7,16 @@
   "license": "UNLICENSED",
   "scripts": {
     "build": "nest build",
-    "start:debug": "nest start --debug --watch",
-    "start:docker:build": "docker-compose --project-name juicyllama up --build --detach",
+    "build": "nest build && mv dist/src/* dist/ && mv dist/src/.* dist/ || true && rmdir dist/src && rmdir dist/src || true",
+    "start:dev": "pnpm run build && node dist/main",
     "link": "sh ./pnpm-link.sh"
   },
   "dependencies": {
     "@juicyllama/core": "^0.0.334"
   },
   "devDependencies": {
-    "@juicyllama/dev": "^0.0.59"
+    "@juicyllama/dev": "^0.0.59",
+    "source-map-support": "^0.5.21"
   },
   "jest": {
     "moduleFileExtensions": [
